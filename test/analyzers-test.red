@@ -2,7 +2,8 @@ Red []
 
 do %quick-test.red
 do %../analyzer.red
-~~~start-file~~~ "encode"
+
+~~~start-file~~~ "analyzer"
 
 collect-term-text: func[ tokenizer ][
     collect [
@@ -19,10 +20,10 @@ collect-term-text: func[ tokenizer ][
     --test-- "simple analyzer-2"	--assert strict-equal? (collect-term-text (analyzer/token-stream "foo      bar .  FOO <> BAR")) ["foo" "bar" "foo" "bar"]
     --test-- "simple analyzer-3"	--assert strict-equal? (collect-term-text (analyzer/token-stream "foo.bar.FOO.BAR"))            ["foo" "bar" "foo" "bar"]
     --test-- "simple analyzer-4"	--assert strict-equal? (collect-term-text (analyzer/token-stream "U.S.A."))                     ["u" "s" "a"]
-    --test-- "simple analyzer-1"	--assert strict-equal? (collect-term-text (analyzer/token-stream "C++"))                        ["c"]
-    --test-- "simple analyzer-1"	--assert strict-equal? (collect-term-text (analyzer/token-stream "B2B"))                        ["b" "b"]
-    --test-- "simple analyzer-1"	--assert strict-equal? (collect-term-text (analyzer/token-stream "2B"))                         ["b"]
-    --test-- "simple analyzer-1"	--assert strict-equal? (collect-term-text (analyzer/token-stream {"QUOTED" word}))              ["quoted" "word"]
+    --test-- "simple analyzer-5"	--assert strict-equal? (collect-term-text (analyzer/token-stream "C++"))                        ["c"]
+    --test-- "simple analyzer-6"	--assert strict-equal? (collect-term-text (analyzer/token-stream "B2B"))                        ["b" "b"]
+    --test-- "simple analyzer-7"	--assert strict-equal? (collect-term-text (analyzer/token-stream "2B"))                         ["b"]
+    --test-- "simple analyzer-8"	--assert strict-equal? (collect-term-text (analyzer/token-stream {"QUOTED" word}))              ["quoted" "word"]
 
 ===start-group=== "whitespace analyzer tests"
     analyzer: WhitespaceAnalyzer
