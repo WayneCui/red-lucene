@@ -9,7 +9,17 @@ Token-Obj: make object! [
     positionIncrement: 1
 ]
 
-SimpleAnalyzer: context [
+Analyzer: object [
+    token-stream: function [ input-data ][
+
+    ]
+
+    getPositionIncrementGap: function [ field-name ] [
+        0
+    ]
+]
+
+SimpleAnalyzer: make Analyzer [
     token-stream: func[ input-data ][
         tokenizer: copy lowercase-tokenizer
         tokenizer/input-data: copy input-data
@@ -18,7 +28,7 @@ SimpleAnalyzer: context [
     ]
 ]
 
-WhitespaceAnalyzer: context [
+WhitespaceAnalyzer: make Analyzer [
     token-stream: func[ input-data ][
         tokenizer: copy whitespace-tokenizer
         tokenizer/input-data: copy input-data
