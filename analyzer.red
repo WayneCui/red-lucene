@@ -10,7 +10,7 @@ Token-Obj: make object! [
 ]
 
 Analyzer: object [
-    token-stream: function [ input-data ][
+    token-stream: function [ data ][
 
     ]
 
@@ -20,21 +20,15 @@ Analyzer: object [
 ]
 
 SimpleAnalyzer: make Analyzer [
-    token-stream: func[ input-data ][
-        tokenizer: copy lowercase-tokenizer
-        tokenizer/input-data: copy input-data
-
-        tokenizer
-    ]
-]
+    token-stream: function [ data ][
+        make lowercase-tokenizer [input-data: copy data ]
+    ] 
+] 
 
 WhitespaceAnalyzer: make Analyzer [
-    token-stream: func[ input-data ][
-        tokenizer: copy whitespace-tokenizer
-        tokenizer/input-data: copy input-data
-
-        tokenizer
-    ]
+    token-stream: function[ data ][
+        make whitespace-tokenizer [input-data: copy data ]
+    ] 
 ]
 
 ; StopAnalyzer: make object! [
